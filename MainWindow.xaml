@@ -1,0 +1,53 @@
+﻿<Window x:Class="notepadAleNie.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:notepadAleNie"
+        mc:Ignorable="d"
+        Title="{Binding FileName}" Height="450" Width="800">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="New" Click="New_Btn" />
+                <MenuItem Header="Open" Click="Open_Btn" />
+                <MenuItem Header="Save" Click="Save_Btn" />
+                <MenuItem Header="Close" Click="Close_Btn" />
+            </MenuItem>
+            <MenuItem Header="Format">
+                <MenuItem 
+                        IsCheckable="True"
+                        IsChecked="False"
+						Header="Dark Mode"
+                        Checked="DarkMode_BG"
+                        Unchecked="LightMode_BG"
+                        />
+                    <MenuItem Header="Text">
+                    <MenuItem Header="Red" Click="RedText_Btn" />
+                    <MenuItem Header="Black" Click="BlackText_Btn" />
+                    <MenuItem Header="White" Click="WhiteText_Btn" />
+                    <MenuItem Header="BEST COLOR EVAH!!!" Click="LimeText_Btn" />
+                </MenuItem>
+                <MenuItem Header="Background">
+                    <MenuItem Header="Custom..." Click="CustomColorText_Button" />
+                </MenuItem>
+                <MenuItem Header="Style" Click="FormatText_Btn" />
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Copy" Command="ApplicationCommands.Copy" />
+                <MenuItem Header="Paste" Command="ApplicationCommands.Paste" />
+                <MenuItem Header="Cut" Command="ApplicationCommands.Cut" />
+                <MenuItem Header="Undo" Command="ApplicationCommands.Undo" />
+            </MenuItem>
+            <MenuItem Header="Info">
+                <MenuItem Header="About app" Click="AboutApplication_Btn"/>
+                <MenuItem Header="About authors" Click="AboutAuthor_Btn" />
+            </MenuItem>
+        </Menu>
+        <TextBox Width="800" Height="450" AcceptsReturn="True" 
+                 TextWrapping="Wrap"
+                 VerticalScrollBarVisibility="Visible"
+                 HorizontalScrollBarVisibility="Visible"
+                 x:Name="FileText" TextChanged="TitleUpdate"/>
+    </DockPanel>
+</Window>

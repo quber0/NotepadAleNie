@@ -1,0 +1,20 @@
+﻿<Window x:Class="notepadAleNie.FormatText"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:notepadAleNie"
+        mc:Ignorable="d"
+        Title="Format text" Height="200" Width="400">
+    <UniformGrid Columns="2">
+        <Label>Font style</Label>
+        <ComboBox SelectedIndex="0">
+            <ComboBoxItem>Normal</ComboBoxItem>
+            <ComboBoxItem FontWeight="Bold">Bold</ComboBoxItem>
+            <ComboBoxItem FontStyle="Italic">Italic</ComboBoxItem>
+            <ComboBoxItem FontStyle="Italic" FontWeight="Bold">Bold Italic</ComboBoxItem>
+        </ComboBox>
+        <Label>Font size</Label>
+        <ListView ItemsSource="{Binding fontSizes}"/>
+    </UniformGrid>
+</Window>

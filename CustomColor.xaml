@@ -1,0 +1,19 @@
+﻿<Window x:Class="notepadAleNie.CustomColor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:notepadAleNie"
+        mc:Ignorable="d"
+        Title="Custom color selection" Height="150" Width="200">
+    <UniformGrid Columns="2">
+        <Label>R</Label>
+        <TextBox x:Name="rValue" />
+        <Label>G</Label>
+        <TextBox x:Name="gValue" />
+        <Label>B</Label>
+        <TextBox x:Name="bValue" />
+        <Label />
+        <Button Click="ConfirmCustomColors_Btn">Confirm color</Button>
+    </UniformGrid>
+</Window>
