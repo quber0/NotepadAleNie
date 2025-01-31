@@ -1,4 +1,4 @@
-﻿<Window x:Class="notepadAleNie.FormatText"
+<Window x:Class="notepadAleNie.FormatText"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,13 +8,19 @@
         Title="Format text" Height="200" Width="400">
     <UniformGrid Columns="2">
         <Label>Font style</Label>
-        <ComboBox SelectedIndex="0">
+        <ComboBox SelectedIndex="0"
+                  x:Name="styleComboBox">
             <ComboBoxItem>Normal</ComboBoxItem>
             <ComboBoxItem FontWeight="Bold">Bold</ComboBoxItem>
             <ComboBoxItem FontStyle="Italic">Italic</ComboBoxItem>
             <ComboBoxItem FontStyle="Italic" FontWeight="Bold">Bold Italic</ComboBoxItem>
         </ComboBox>
         <Label>Font size</Label>
-        <ListView ItemsSource="{Binding fontSizes}"/>
+        <ListView ItemsSource="{Binding fontSizes}"
+                  SelectedValue="{Binding size}"
+                  x:Name="listView"
+                   />
+        <TextBlock x:Name="sampleText" FontStyle="Normal">Sample text</TextBlock>
+        <Button Click="ConfirmChoices">Confirm</Button>
     </UniformGrid>
 </Window>
