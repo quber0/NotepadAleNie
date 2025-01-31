@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +19,44 @@ namespace notepadAleNie
     /// </summary>
     public partial class FormatText : Window
     {
-        public List<int> fontSizes = [];
+        public List<int> fontSizes { get; set; } = new List<int>();
+        public int size { get; set; } = 12;
+        public FontStyle Style { get; set; } = FontStyles.Normal;
+        public FontWeight Weight { get; set; } = FontWeights.Normal;
         public FormatText()
         {
             InitializeComponent();
-            DataContext = this;
             for (int i = 6; i < 40; i += 2) { 
             fontSizes.Add(i);
             }
+            DataContext = this;
+        }
+
+        private void ConfirmChoices(object sender, RoutedEventArgs e)
+        {
+            size = (int)listView.SelectedItem;
+            sampleText.FontSize = size;
+            switch (styleComboBox.SelectedIndex)
+            {
+                case 0:
+                    break;
+                case 1:
+                    Weight = FontWeights.Bold;
+                    Style = FontStyles.Normal;
+                    break;
+                case 2:
+                    Weight = FontWeights.Normal;
+                    Style = FontStyles.Italic;
+                    break;
+                case 3:
+                    Weight = FontWeights.Bold;
+                    Style = FontStyles.Italic;
+                    break;
+                default:
+                    break;
+            }   
+            sampleText.FontWeight = Weight;
+            sampleText.FontStyle = Style;
         }
     }
 }
