@@ -1,0 +1,15 @@
+<Window x:Class="notepadAleNie.AboutAuthor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:notepadAleNie"
+        mc:Ignorable="d"
+        Title="AboutAuthor" Height="100" Width="200">
+    <StackPanel>
+        <TextBlock>Authors:</TextBlock>
+        <TextBlock>quber0 @ GitHub</TextBlock>
+        <TextBlock>kxfo12 @ GitHub</TextBlock>
+        <TextBlock>2025 All Rights Reserved</TextBlock>
+    </StackPanel>
+</Window>
