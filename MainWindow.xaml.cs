@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+using Microsoft.Win32;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -26,12 +26,13 @@ namespace notepadAleNie
             InitializeComponent();
         }
 
-        private void Save_Btn(object sender, RoutedEventArgs e)
+
+        private void SaveFile(object sender, RoutedEventArgs e)
         {
             if (Title.Contains('*'))
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = "text file | *.txt";
+                saveFileDialog.Filter = "Text file (*.txt) | *.txt";
                 if (saveFileDialog.ShowDialog() == true)
                 {
                     //zapis do pliku
@@ -43,11 +44,11 @@ namespace notepadAleNie
             Title = FileName;
         }
 
-        private void Open_Btn(object sender, RoutedEventArgs e)
+        private void OpenFile(object sender, RoutedEventArgs e)
         {
             saveFileQuestion(sender, e);
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "text file | *.txt";
+            openFileDialog.Filter = "Text file (*.txt) | *.txt";
             if (openFileDialog.ShowDialog() == true)
             {
                 //zapis do pliku
@@ -57,10 +58,11 @@ namespace notepadAleNie
             }
         }
 
-        private void New_Btn(object sender, RoutedEventArgs e)
+
+        private void NewFile(object sender, RoutedEventArgs e)
         {
             saveFileQuestion(sender, e);
-            FileName = "New_File";
+            FileName = "Unnamed";
             FileText.Text = "";
             Title = FileName;
         }
@@ -70,13 +72,14 @@ namespace notepadAleNie
             {
                 MessageBoxResult result = MessageBox.Show("Czy chcesz wcześniej zapisać?", "Beka z cb",
                 MessageBoxButton.YesNoCancel, MessageBoxImage.Error);
-                if (result == MessageBoxResult.Yes) Save_Btn(sender, e);
+                if (result == MessageBoxResult.Yes) SaveFile(sender, e);
                 else if (result == MessageBoxResult.Cancel) return;
             }
         }
 
         private void TitleUpdate(object sender, TextChangedEventArgs e)
         {
+            if (Title.Length == 0) Title = "*Unnamed";
             if (!Title.Contains('*')) Title = "*" + Title;
         }
 
@@ -92,14 +95,14 @@ namespace notepadAleNie
         }
         private void AboutApplication_Btn(object sender, RoutedEventArgs e)
         {
-            Window windowAboutApplication = new Window();
-            windowAboutApplication.Show();//Można działać w tle
+            AboutApplication aboutApplication = new();
+            aboutApplication.Show();//Można działać w tle
         }
 
         private void AboutAuthor_Btn(object sender, RoutedEventArgs e)
         {
-            Window windowAboutAuthor = new Window();
-            windowAboutAuthor.ShowDialog(); //nie można działać w tle
+            AboutAuthor aboutAuthor = new();
+            aboutAuthor.Show(); //nie można działać w tle
         }
         private void DarkMode_BG(object sender, RoutedEventArgs e)
         {
@@ -130,7 +133,7 @@ namespace notepadAleNie
 
         private void CustomColorText_Button(object sender, RoutedEventArgs e)
         {
-            CustomColor customColor = new CustomColor();
+            CustomColor customColor = new();
             customColor.ShowDialog();
             byte r = customColor.R;
             byte g = customColor.G;
@@ -151,6 +154,19 @@ namespace notepadAleNie
         {
             FormatText formatText = new();
             formatText.ShowDialog();
+            FileText.FontSize = formatText.size;
+            FileText.FontStyle = formatText.Style;
+            FileText.FontWeight = formatText.Weight;
+        }
+
+        private void WordWrapOn(object sender, RoutedEventArgs e)
+        {
+            if (FileText != null) FileText.TextWrapping = TextWrapping.Wrap; 
+        }
+
+        private void WordWrapOff(object sender, RoutedEventArgs e)
+        {
+            if (FileText != null) FileText.TextWrapping = TextWrapping.NoWrap;
         }
     }
 }
